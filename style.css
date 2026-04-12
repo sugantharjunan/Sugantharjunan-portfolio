@@ -1,26 +1,22 @@
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* BODY */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: #f4f7fb;
-    color: #333;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
+    text-align: center;
+    padding: 60px 20px;
     background: linear-gradient(135deg, #2c5364, #203a43);
     color: white;
-    text-align: center;
-    padding: 60px 20px 40px;
 }
 
-/* PROFILE IMAGE */
 .profile-img {
     width: 130px;
     height: 130px;
@@ -30,45 +26,26 @@ body {
     margin-bottom: 15px;
 }
 
-/* NAME */
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-/* SUBTEXT */
-.hero p {
-    font-size: 16px;
-    opacity: 0.9;
-}
-
-/* MAIN CONTAINER */
+/* CONTAINER */
 .container {
     max-width: 1000px;
     margin: 30px auto;
     padding: 0 15px;
 }
 
-/* CARD STYLE */
+/* CARD */
 .card {
     background: white;
     padding: 25px;
     margin-bottom: 25px;
     border-radius: 14px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
 }
 
 /* HEADINGS */
 h2 {
     color: #2c5364;
-    margin-bottom: 12px;
-    border-left: 4px solid #2c5364;
-    padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 /* PROJECT GRID */
@@ -78,37 +55,10 @@ h2 {
     gap: 15px;
 }
 
-/* PROJECT CARD */
 .project {
     background: #f9fbfd;
     padding: 15px;
     border-radius: 10px;
-    border-left: 4px solid #2c5364;
-    transition: 0.3s;
-}
-
-.project:hover {
-    transform: translateY(-5px);
-}
-
-/* PROJECT TITLE */
-.project h3 {
-    margin-bottom: 5px;
-}
-
-/* BUTTON */
-.project a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 6px 12px;
-    background: #2c5364;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-.project a:hover {
-    background: #1e3c45;
 }
 
 /* SKILLS */
@@ -126,25 +76,14 @@ h2 {
     border-radius: 15px;
 }
 
-/* CONTACT */
-.contact p {
-    margin-bottom: 6px;
-}
-
-/* SOCIAL BUTTONS */
+/* SOCIAL */
 .social-links a {
-    display: inline-block;
     margin-right: 10px;
-    margin-top: 10px;
     padding: 6px 12px;
     background: #2c5364;
     color: white;
-    border-radius: 6px;
+    border-radius: 5px;
     text-decoration: none;
-}
-
-.social-links a:hover {
-    background: #1e3c45;
 }
 
 /* FOOTER */
@@ -152,11 +91,4 @@ footer {
     text-align: center;
     padding: 15px;
     background: #ddd;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 28px;
-    }
 }
