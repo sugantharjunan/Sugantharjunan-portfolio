@@ -4,79 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suganth Arjunan Portfolio</title>
+    <meta name="description" content="Portfolio of Suganth Arjunan - ECE Student, Embedded Systems, IoT and PCB Designer">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header class="hero">
-    <img src="profile.jpg" class="profile-img">
-    <h1>Suganth Arjunan</h1>
-    <p>ECE Student • Embedded Systems • IoT • PCB Designer</p>
+    <div class="hero-content">
+        <img src="profile.jpg" alt="Suganth Arjunan Profile Photo" class="profile-img">
+        <h1>Suganth Arjunan</h1>
+        <p>ECE Student • Embedded Systems • IoT • PCB Designer</p>
+    </div>
 </header>
 
-<div class="container">
+<main class="container">
 
+    <!-- Contact -->
     <section class="card reveal">
-        <p><b>Mobile:</b> 9597427479</p>
-        <p><b>Email:</b> suganthmanoj48@gmail.com</p>
+        <h2>CONTACT</h2>
+        <div class="info-grid">
+            <p><strong>Mobile:</strong> 9597427479</p>
+            <p><strong>Email:</strong> suganthmanoj48@gmail.com</p>
+        </div>
     </section>
 
+    <!-- Personal Details -->
     <section class="card reveal">
         <h2>PERSONAL DETAILS</h2>
-        <p>Location: Tiruppur</p>
-        <p>Date of Birth: April 27, 2006</p>
+        <div class="info-grid">
+            <p><strong>Location:</strong> Tiruppur</p>
+            <p><strong>Date of Birth:</strong> April 27, 2006</p>
+        </div>
     </section>
 
+    <!-- Education -->
     <section class="card reveal">
         <h2>EDUCATION</h2>
-        <p><b>B.E – ECE</b></p>
-        <p>Velalar College of Engineering and Technology</p>
-        <p>Score: 80%</p>
-        <p><b>Class XII:</b> 77%</p>
-        <p><b>Class X:</b> 100%</p>
+        <div class="education-block">
+            <p><strong>B.E – ECE</strong></p>
+            <p>Velalar College of Engineering and Technology</p>
+            <p>Score: 80%</p>
+        </div>
+
+        <div class="education-block">
+            <p><strong>Class XII:</strong> 77%</p>
+            <p><strong>Class X:</strong> 100%</p>
+        </div>
     </section>
 
+    <!-- Internship -->
     <section class="card reveal">
         <h2>INTERNSHIP</h2>
-        <p><b>San Tech Innovation (Dec 2024)</b></p>
-        <p>
-            Worked on embedded systems design, focusing on real-time performance,
-            microcontrollers, sensors, and communication protocols.
-        </p>
+        <div class="experience-block">
+            <p><strong>San Tech Innovation (Dec 2024)</strong></p>
+            <p>
+                Worked on embedded systems design, focusing on real-time performance,
+                microcontrollers, sensors, and communication protocols.
+            </p>
+        </div>
     </section>
 
+    <!-- Projects -->
     <section class="card reveal">
         <h2>PROJECTS</h2>
 
-        <div class="project">
-            <h3>Public Transport Tracking System</h3>
-            <p>
-                IoT-based system using GPS and ESP8266 to track real-time location,
-                ETA, speed, and route. Integrated Firebase and SMS alerts.
-            </p>
-            <button onclick="alert('Add your GitHub link here')">View Code</button>
-        </div>
+        <div class="projects-container">
 
-        <div class="project">
-            <h3>Smart Environmental Monitoring</h3>
-            <p>
-                Monitors temperature, humidity, and air quality using sensors,
-                Arduino, and cloud integration.
-            </p>
-            <button onclick="alert('Add your GitHub link here')">View Code</button>
-        </div>
+            <article class="project">
+                <h3>Public Transport Tracking System</h3>
+                <p>
+                    IoT-based system using GPS and ESP8266 to track real-time location,
+                    ETA, speed, and route. Integrated Firebase and SMS alerts.
+                </p>
+                <button onclick="alert('Add your GitHub link here')">View Code</button>
+            </article>
 
-        <div class="project">
-            <h3>Smart Agriculture Monitoring</h3>
-            <p>
-                Tracks soil moisture and environmental data using sensors
-                and microcontrollers for smart farming.
-            </p>
-            <button onclick="alert('Add your GitHub link here')">View Code</button>
-        </div>
+            <article class="project">
+                <h3>Smart Environmental Monitoring</h3>
+                <p>
+                    Monitors temperature, humidity, and air quality using sensors,
+                    Arduino, and cloud integration.
+                </p>
+                <button onclick="alert('Add your GitHub link here')">View Code</button>
+            </article>
 
+            <article class="project">
+                <h3>Smart Agriculture Monitoring</h3>
+                <p>
+                    Tracks soil moisture and environmental data using sensors
+                    and microcontrollers for smart farming.
+                </p>
+                <button onclick="alert('Add your GitHub link here')">View Code</button>
+            </article>
+
+        </div>
     </section>
 
+    <!-- Skills -->
     <section class="card reveal">
         <h2>SKILLS</h2>
         <ul class="skills">
@@ -88,12 +112,16 @@
         </ul>
     </section>
 
+    <!-- Languages -->
     <section class="card reveal">
         <h2>LANGUAGES</h2>
-        <p>Tamil</p>
-        <p>English</p>
+        <ul class="skills">
+            <li>Tamil</li>
+            <li>English</li>
+        </ul>
     </section>
 
+    <!-- Certifications -->
     <section class="card reveal">
         <h2>CERTIFICATIONS</h2>
         <ul class="skills">
@@ -104,13 +132,17 @@
         </ul>
     </section>
 
+    <!-- Connect -->
     <section class="card reveal contact">
         <h2>CONNECT</h2>
-        <a href="https://github.com/sugantharjunan" target="_blank">GitHub</a><br><br>
-        <a href="https://www.linkedin.com/in/suganth-arjunan" target="_blank">LinkedIn</a>
+
+        <div class="social-links">
+            <a href="https://github.com/sugantharjunan" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/suganth-arjunan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
     </section>
 
-</div>
+</main>
 
 <footer>
     <p>© 2026 Suganth Arjunan</p>
