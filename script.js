@@ -1,164 +1,206 @@
-/* =========================
-   REVEAL ANIMATION
-========================= */
+        /* ===========================
+   SCROLL PROGRESS BAR
+=========================== */
+const progressBar = document.getElementById("progressBar");
+
+window.addEventListener("scroll", () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const totalHeight =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const progress = (scrollTop / totalHeight) * 100;
+  progressBar.style.width = progress + "%";
+});
+
+
+/* ===========================
+   CUSTOM CURSOR
+=========================== */
+const cursor      = document.getElementById("cursor");
+const cursorTrail = document.getElementById("cursorTrail");
+
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursor.style.left = mouseX + "px";
+  cursor.style.top  = mouseY + "px";
+});
+
+// Smooth trail animation
+function animateTrail() {
+  trailX += (mouseX - trailX) * 0.12;
+  trailY += (mouseY - trailY) * 0.12;
+  cursorTrail.style.left = trailX + "px";
+  cursorTrail.style.top  = trailY + "px";
+  requestAnimationFrame(animateTrail);
+}
+animateTrail();
+
+// Cursor grow on hover
+document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card").forEach((el) => {
+  el.addEventListener("mouseenter", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(2.5)";
+    cursorTrail.style.transform = "translate(-50%, -50%) scale(1.5)";
+    cursorTrail.style.borderColor = "rgba(0,229,160,0.6)";
+  });
+  el.addEventListener("mouseleave", () => {
+    cursor.style.transform = "translate(-50%, -50%) scale(1)";
+    cursorTrail.style.transform = "translate(-50%, -50%) scale(1)";
+    cursorTrail.style.borderColor = "rgba(0,194,255,0.4)";
+  });
+});
+
+
+/* ===========================
+   REVEAL ON SCROLL
+=========================== */
 const reveals = document.querySelectorAll(".reveal");
 
 function revealSections() {
-    reveals.forEach((section) => {
-        const top = section.getBoundingClientRect().top;
-        const visiblePoint = window.innerHeight - 100;
-
-        if (top < visiblePoint) {
-            section.classList.add("active");
-        }
-    });
+  reveals.forEach((section) => {
+    const top = section.getBoundingClientRect().top;
+    const trigger = window.innerHeight - 80;
+    if (top < trigger) {
+      section.classList.add("active");
+    }
+  });
 }
 
 window.addEventListener("scroll", revealSections);
 window.addEventListener("load", revealSections);
 
 
-/* =========================
-   TYPING EFFECT
-========================= */
-const subtitle = document.querySelector(".hero p");
+/* ===========================
+   TYPING EFFECT (HERO)
+=========================== */
+const subtitleEl = document.getElementById("typedSubtitle");
+const phrases = [
+  "Embedded Systems Engineer",
+  "IoT Developer",
+  "PCB Designer",
+  "ECE Student @ VCET"
+];
 
-if (subtitle) {
-    const text = subtitle.innerText;
-    subtitle.innerText = "";
-    let i = 0;
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 65;
 
-    function typeText() {
-        if (i < text.length) {
-            subtitle.innerText += text.charAt(i);
-            i++;
-            setTimeout(typeText, 60);
-        }
+function type() {
+  const currentPhrase = phrases[phraseIndex];
+
+  if (!isDeleting) {
+    subtitleEl.textContent = currentPhrase.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === currentPhrase.length) {
+      isDeleting = true;
+      typingSpeed = 1800; // Pause before deleting
+    } else {
+      typingSpeed = 65;
     }
+  } else {
+    subtitleEl.textContent = currentPhrase.substring(0, charIndex - 1);
+    charIndex--;
+    typingSpeed = 38;
+    if (charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+  }
 
-    typeText();
+  setTimeout(type, typingSpeed);
 }
 
+window.addEventListener("load", () => {
+  setTimeout(type, 600);
+});
 
-/* =========================
+
+/* ===========================
    BACK TO TOP BUTTON
-========================= */
-const topBtn = document.createElement("button");
-topBtn.id = "topBtn";
-topBtn.innerHTML = "↑";
-document.body.appendChild(topBtn);
+=========================== */
+const topBtn = document.getElementById("topBtn");
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-        topBtn.style.display = "block";
-    } else {
-        topBtn.style.display = "none";
-    }
+  if (window.scrollY > 350) {
+    topBtn.style.display = "flex";
+    topBtn.style.alignItems = "center";
+    topBtn.style.justifyContent = "center";
+  } else {
+    topBtn.style.display = "none";
+  }
 });
 
 topBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+
+/* ===========================
+   STAGGERED CARD ANIMATION
+=========================== */
+window.addEventListener("load", () => {
+  const cards = document.querySelectorAll(".reveal");
+  cards.forEach((card, index) => {
+    card.style.transitionDelay = `${index * 0.06}s`;
+  });
+});
+
+
+/* ===========================
+   RIPPLE EFFECT ON BUTTONS
+=========================== */
+document.querySelectorAll(".project-btn, #topBtn").forEach((btn) => {
+  btn.addEventListener("click", function (e) {
+    const ripple = document.createElement("span");
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    Object.assign(ripple.style, {
+      left: x + "px",
+      top: y + "px",
+      position: "absolute",
+      width: "8px",
+      height: "8px",
+      borderRadius: "50%",
+      background: "rgba(255,255,255,0.55)",
+      transform: "scale(0)",
+      animation: "rippleEffect 0.55s linear",
+      pointerEvents: "none"
     });
+
+    this.style.position = "relative";
+    this.style.overflow = "hidden";
+    this.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600);
+  });
 });
 
-
-/* =========================
-   BUTTON RIPPLE EFFECT
-========================= */
-document.querySelectorAll("button").forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-
-        const ripple = document.createElement("span");
-
-        const x = e.offsetX;
-        const y = e.offsetY;
-
-        ripple.style.left = x + "px";
-        ripple.style.top = y + "px";
-        ripple.style.position = "absolute";
-        ripple.style.width = "12px";
-        ripple.style.height = "12px";
-        ripple.style.borderRadius = "50%";
-        ripple.style.background = "rgba(255,255,255,0.6)";
-        ripple.style.transform = "scale(0)";
-        ripple.style.animation = "ripple 0.6s linear";
-
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    });
-});
-
-
-/* =========================
-   CURSOR GLOW EFFECT
-========================= */
-const cursor = document.createElement("div");
-cursor.style.width = "18px";
-cursor.style.height = "18px";
-cursor.style.borderRadius = "50%";
-cursor.style.position = "fixed";
-cursor.style.pointerEvents = "none";
-cursor.style.background = "rgba(0,194,255,0.25)";
-cursor.style.transform = "translate(-50%, -50%)";
-cursor.style.zIndex = "9999";
-cursor.style.transition = "0.08s linear";
-
-document.body.appendChild(cursor);
-
-document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-});
-
-
-/* =========================
-   SCROLL PROGRESS BAR
-========================= */
-const progressBar = document.createElement("div");
-
-progressBar.style.position = "fixed";
-progressBar.style.top = "0";
-progressBar.style.left = "0";
-progressBar.style.height = "4px";
-progressBar.style.width = "0%";
-progressBar.style.zIndex = "9999";
-progressBar.style.background = "linear-gradient(90deg,#00c2ff,#0d47a1)";
-
-document.body.appendChild(progressBar);
-
-window.addEventListener("scroll", () => {
-    let scrollTop = document.documentElement.scrollTop;
-    let height =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-    let progress = (scrollTop / height) * 100;
-    progressBar.style.width = progress + "%";
-});
-
-
-/* =========================
-   ADD RIPPLE KEYFRAMES
-========================= */
-const style = document.createElement("style");
-
-style.innerHTML = `
-button{
-    position:relative;
-    overflow:hidden;
-}
-
-@keyframes ripple{
-    to{
-        transform:scale(14);
-        opacity:0;
-    }
-}
+// Inject ripple keyframes
+const rippleStyle = document.createElement("style");
+rippleStyle.textContent = `
+  @keyframes rippleEffect {
+    to { transform: scale(18); opacity: 0; }
+  }
 `;
+document.head.appendChild(rippleStyle);
 
-document.head.appendChild(style);
+
+/* ===========================
+   PROJECT IMAGE FALLBACK TEXT
+=========================== */
+document.querySelectorAll(".project-img-wrap").forEach((wrap) => {
+  const img = wrap.querySelector(".project-img");
+  if (img) {
+    img.addEventListener("error", () => {
+      wrap.classList.add("img-fallback");
+      const overlay = wrap.querySelector(".project-img-overlay");
+      if (overlay) overlay.style.opacity = "1";
+    });
+  }
+});
