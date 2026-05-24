@@ -1,4 +1,4 @@
-        /* ===========================
+/* ===========================
    SCROLL PROGRESS BAR
 =========================== */
 const progressBar = document.getElementById("progressBar");
@@ -29,7 +29,6 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top  = mouseY + "px";
 });
 
-// Smooth trail animation
 function animateTrail() {
   trailX += (mouseX - trailX) * 0.12;
   trailY += (mouseY - trailY) * 0.12;
@@ -39,12 +38,17 @@ function animateTrail() {
 }
 animateTrail();
 
-// Cursor grow on hover
-document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card").forEach((el) => {
+// Cursor grow on hover — includes freelance cards too
+document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .project-card--freelance").forEach((el) => {
   el.addEventListener("mouseenter", () => {
     cursor.style.transform = "translate(-50%, -50%) scale(2.5)";
     cursorTrail.style.transform = "translate(-50%, -50%) scale(1.5)";
-    cursorTrail.style.borderColor = "rgba(0,229,160,0.6)";
+    // Green tint for freelance cards, blue for others
+    if (el.classList.contains("project-card--freelance")) {
+      cursorTrail.style.borderColor = "rgba(0,200,83,0.6)";
+    } else {
+      cursorTrail.style.borderColor = "rgba(0,229,160,0.6)";
+    }
   });
   el.addEventListener("mouseleave", () => {
     cursor.style.transform = "translate(-50%, -50%) scale(1)";
@@ -81,6 +85,7 @@ const phrases = [
   "Embedded Systems Engineer",
   "IoT Developer",
   "PCB Designer",
+  "Freelance Project Builder",
   "ECE Student @ VCET"
 ];
 
@@ -97,7 +102,7 @@ function type() {
     charIndex++;
     if (charIndex === currentPhrase.length) {
       isDeleting = true;
-      typingSpeed = 1800; // Pause before deleting
+      typingSpeed = 1800;
     } else {
       typingSpeed = 65;
     }
@@ -152,8 +157,9 @@ window.addEventListener("load", () => {
 
 /* ===========================
    RIPPLE EFFECT ON BUTTONS
+   (college + freelance)
 =========================== */
-document.querySelectorAll(".project-btn, #topBtn").forEach((btn) => {
+document.querySelectorAll(".project-btn, .project-btn--freelance, #topBtn").forEach((btn) => {
   btn.addEventListener("click", function (e) {
     const ripple = document.createElement("span");
     const rect = this.getBoundingClientRect();
@@ -181,7 +187,6 @@ document.querySelectorAll(".project-btn, #topBtn").forEach((btn) => {
   });
 });
 
-// Inject ripple keyframes
 const rippleStyle = document.createElement("style");
 rippleStyle.textContent = `
   @keyframes rippleEffect {
@@ -192,7 +197,8 @@ document.head.appendChild(rippleStyle);
 
 
 /* ===========================
-   PROJECT IMAGE FALLBACK TEXT
+   PROJECT IMAGE FALLBACK
+   (college + freelance)
 =========================== */
 document.querySelectorAll(".project-img-wrap").forEach((wrap) => {
   const img = wrap.querySelector(".project-img");
