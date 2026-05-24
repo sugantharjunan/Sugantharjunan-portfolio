@@ -14,7 +14,6 @@ html { scroll-behavior: smooth; }
    DESIGN TOKENS
 =========================== */
 :root {
-  /* Dark, rich palette — no more white wash */
   --bg:         #0e0f17;
   --bg2:        #13141f;
   --bg3:        #1a1b2e;
@@ -23,12 +22,10 @@ html { scroll-behavior: smooth; }
   --border:     rgba(255,255,255,0.08);
   --border2:    rgba(255,255,255,0.14);
 
-  /* Text */
   --text:       #e8eaf0;
   --text2:      #9a9fb8;
   --text3:      #636882;
 
-  /* Accents */
   --cyan:       #38bdf8;
   --cyan-dim:   rgba(56,189,248,0.15);
   --violet:     #a78bfa;
@@ -37,7 +34,6 @@ html { scroll-behavior: smooth; }
   --green-dim:  rgba(52,211,153,0.15);
   --amber:      #fbbf24;
 
-  /* Gradients */
   --grad-hero:  linear-gradient(135deg, #0e0f17 0%, #1a1230 50%, #0d1f3c 100%);
   --grad-cyan:  linear-gradient(135deg, #0369a1, #38bdf8);
   --grad-green: linear-gradient(135deg, #059669, #34d399);
@@ -59,7 +55,6 @@ body {
   color: var(--text);
   overflow-x: hidden;
   cursor: none;
-  /* Subtle dot-grid texture */
   background-image:
     radial-gradient(circle, rgba(56,189,248,0.04) 1px, transparent 1px),
     radial-gradient(circle at 80% 20%, rgba(167,139,250,0.08) 0%, transparent 40%),
@@ -121,7 +116,6 @@ body {
   padding: 80px 24px 60px;
 }
 
-/* Animated noise overlay */
 .hero-noise {
   position: absolute; inset: 0;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
@@ -129,7 +123,6 @@ body {
   pointer-events: none;
 }
 
-/* Floating orbs */
 .hero-orb {
   position: absolute;
   border-radius: 50%;
@@ -178,18 +171,6 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  background: var(--cyan-dim);
-  border: 1px solid rgba(56,189,248,0.25);
-  padding: 5px 16px;
-  border-radius: 999px;
-}
-
 /* Profile ring */
 .profile-ring {
   width: 160px; height: 160px;
@@ -215,7 +196,6 @@ body {
 }
 .profile-img:hover { transform: scale(1.06) rotate(2deg); }
 
-/* Hero name */
 .hero-name {
   font-family: 'Fraunces', serif;
   font-size: clamp(2.8rem, 6vw, 5rem);
@@ -339,7 +319,6 @@ body {
   overflow: hidden;
 }
 
-/* Subtle top glow line */
 .card::before {
   content: '';
   position: absolute;
@@ -355,7 +334,6 @@ body {
   border-color: var(--border2);
 }
 
-/* Freelance card — green tint */
 .card--freelance {
   background: linear-gradient(160deg, var(--bg2) 0%, rgba(16,35,25,0.95) 100%);
   border-color: rgba(52,211,153,0.15);
@@ -522,7 +500,6 @@ body {
   border-color: rgba(56,189,248,0.25);
 }
 
-/* Freelance card */
 .project-card--freelance {
   border-top: 2px solid rgba(52,211,153,0.5);
   border-left-color: rgba(52,211,153,0.15);
@@ -532,7 +509,6 @@ body {
   box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 30px rgba(52,211,153,0.08);
 }
 
-/* Image area */
 .project-img-wrap {
   position: relative;
   height: 185px;
@@ -586,7 +562,6 @@ body {
 }
 .project-card--freelance .project-img-overlay span { color: var(--green); }
 
-/* Body */
 .project-body { padding: 18px 18px 20px; }
 .project-body h3 {
   font-family: 'Fraunces', serif;
@@ -623,7 +598,6 @@ body {
   color: var(--green);
 }
 
-/* Buttons */
 .project-btn {
   display: inline-block;
   text-decoration: none;
@@ -711,13 +685,15 @@ body {
 .skill-icon { font-size: 0.95rem; }
 
 /* ===========================
-   CERTIFICATIONS
+   CERTIFICATIONS — all same colour
 =========================== */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px;
 }
+
+/* Single unified cert card style — no green variant */
 .cert-card {
   border-radius: 14px;
   padding: 20px 14px;
@@ -754,23 +730,6 @@ body {
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-/* New cert cards */
-.cert-card--new {
-  border-color: rgba(52,211,153,0.2);
-  background: var(--green-dim);
-}
-.cert-card--new:hover {
-  background: rgba(52,211,153,0.15);
-  border-color: rgba(52,211,153,0.4);
-}
-.cert-card--new:hover .cert-title { color: var(--green); }
-.cert-badge--new {
-  background: var(--grad-green);
-  color: white;
-  border-color: transparent;
-  animation: statusPulse 2.5s ease-in-out infinite;
 }
 
 /* ===========================
