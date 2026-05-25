@@ -210,7 +210,6 @@ body {
 .card--freelance::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
 .card--freelance .card-label { color: var(--green); }
 
-/* Awards card */
 .card--awards {
   background: linear-gradient(160deg, var(--bg2) 0%, rgba(30,22,8,0.95) 100%);
   border-color: rgba(251,191,36,0.2);
@@ -232,7 +231,7 @@ body {
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* ===========================
-   CONTACT / PERSONAL — click-to-reveal
+   CONTACT / PERSONAL — click-to-reveal (GitHub style)
 =========================== */
 .info-row {
   display: flex; align-items: flex-start; gap: 14px;
@@ -249,6 +248,23 @@ body {
   padding-left: 6px; padding-right: 6px; margin: 0 -6px;
 }
 .info-row--clickable:hover { background: var(--cyan-dim); }
+
+/* GitHub-style link button */
+.info-link-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--surface2); border: 1px solid var(--border2);
+  color: var(--cyan); border-radius: 8px;
+  padding: 5px 12px; font-size: 0.8rem; font-weight: 600;
+  cursor: pointer; transition: 0.25s ease;
+  text-decoration: none; letter-spacing: 0.02em;
+  margin-top: 4px;
+}
+.info-link-btn:hover {
+  background: var(--cyan-dim); border-color: var(--cyan);
+  transform: translateY(-1px); box-shadow: 0 4px 14px rgba(56,189,248,0.2);
+}
+.info-link-btn svg { width: 14px; height: 14px; }
+
 .info-hidden {
   color: var(--text3); letter-spacing: 0.15em;
   filter: blur(4px); user-select: none;
@@ -287,8 +303,7 @@ body {
   border-radius: 999px; font-size: 0.74rem; font-weight: 700;
 }
 .edu-score--gold {
-  background: rgba(245,158,11,0.15);
-  color: var(--gold);
+  background: rgba(245,158,11,0.15); color: var(--gold);
   border: 1px solid rgba(245,158,11,0.4);
   box-shadow: 0 0 12px rgba(245,158,11,0.2);
   animation: goldPulse 2.5s ease-in-out infinite;
@@ -397,8 +412,7 @@ body {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4);
   color: var(--gold); font-size: 1rem; font-weight: 800;
-  padding: 8px 18px; border-radius: 999px;
-  width: fit-content;
+  padding: 8px 18px; border-radius: 999px; width: fit-content;
   box-shadow: 0 0 16px rgba(245,158,11,0.2);
   animation: goldPulse 2.5s ease-in-out infinite;
 }
@@ -406,9 +420,7 @@ body {
   font-family: 'Fraunces', serif;
   font-size: 1.15rem; font-weight: 700; color: var(--text); line-height: 1.3;
 }
-.award-org {
-  font-size: 0.78rem; color: var(--text3); letter-spacing: 0.02em;
-}
+.award-org { font-size: 0.78rem; color: var(--text3); letter-spacing: 0.02em; }
 .award-project-title {
   font-size: 0.84rem; color: var(--text2); line-height: 1.6;
   background: var(--surface); border: 1px solid var(--border);
@@ -420,11 +432,8 @@ body {
   letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber);
   margin-bottom: 4px;
 }
-.award-dept {
-  font-size: 0.75rem; color: var(--text3); letter-spacing: 0.02em;
-}
+.award-dept { font-size: 0.75rem; color: var(--text3); letter-spacing: 0.02em; }
 
-/* Certificate preview thumbnail */
 .award-cert-preview {
   flex-shrink: 0; width: 200px; height: 145px;
   border-radius: 12px; overflow: hidden;
@@ -447,8 +456,7 @@ body {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(10,8,0,0.85) 0%, transparent 60%);
   display: flex; align-items: flex-end; justify-content: center;
-  padding-bottom: 12px; opacity: 0;
-  transition: opacity 0.3s ease;
+  padding-bottom: 12px; opacity: 0; transition: opacity 0.3s ease;
 }
 .award-cert-preview:hover .award-cert-overlay { opacity: 1; }
 .award-cert-overlay span {
