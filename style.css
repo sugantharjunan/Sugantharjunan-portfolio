@@ -28,9 +28,12 @@ html { scroll-behavior: smooth; }
   --green:      #34d399;
   --green-dim:  rgba(52,211,153,0.15);
   --amber:      #fbbf24;
+  --amber-dim:  rgba(251,191,36,0.15);
+  --gold:       #f59e0b;
   --grad-hero:  linear-gradient(135deg, #0e0f17 0%, #1a1230 50%, #0d1f3c 100%);
   --grad-cyan:  linear-gradient(135deg, #0369a1, #38bdf8);
   --grad-green: linear-gradient(135deg, #059669, #34d399);
+  --grad-gold:  linear-gradient(135deg, #92400e, #f59e0b);
   --shadow-sm:  0 2px 12px rgba(0,0,0,0.4);
   --shadow-md:  0 8px 32px rgba(0,0,0,0.5);
   --shadow-lg:  0 20px 60px rgba(0,0,0,0.6);
@@ -206,6 +209,15 @@ body {
 .card--freelance { background: linear-gradient(160deg, var(--bg2) 0%, rgba(16,35,25,0.95) 100%); border-color: rgba(52,211,153,0.15); }
 .card--freelance::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
 .card--freelance .card-label { color: var(--green); }
+
+/* Awards card */
+.card--awards {
+  background: linear-gradient(160deg, var(--bg2) 0%, rgba(30,22,8,0.95) 100%);
+  border-color: rgba(251,191,36,0.2);
+}
+.card--awards::before { background: linear-gradient(90deg, transparent, var(--amber), transparent); }
+.card--awards .card-label { color: var(--amber); }
+
 .card-label {
   font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--cyan); margin-bottom: 20px;
@@ -220,13 +232,37 @@ body {
 .reveal.active { opacity: 1; transform: translateY(0); }
 
 /* ===========================
-   CONTACT / PERSONAL
+   CONTACT / PERSONAL — click-to-reveal
 =========================== */
-.info-row { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.info-row {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 14px 0; border-bottom: 1px solid var(--border);
+}
 .info-row:last-child { border-bottom: none; }
 .info-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
 .info-key { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); margin-bottom: 2px; }
 .info-val { font-size: 0.92rem; font-weight: 500; color: var(--text); word-break: break-all; }
+
+.info-row--clickable {
+  cursor: pointer; border-radius: 10px;
+  transition: background 0.2s ease;
+  padding-left: 6px; padding-right: 6px; margin: 0 -6px;
+}
+.info-row--clickable:hover { background: var(--cyan-dim); }
+.info-hidden {
+  color: var(--text3); letter-spacing: 0.15em;
+  filter: blur(4px); user-select: none;
+  transition: filter 0.35s ease, color 0.35s ease;
+}
+.info-hidden.revealed {
+  filter: blur(0); color: var(--text);
+}
+.reveal-hint {
+  margin-left: auto; font-size: 0.68rem; color: var(--text3);
+  letter-spacing: 0.04em; flex-shrink: 0; padding-top: 4px;
+  transition: opacity 0.3s;
+}
+.info-row--clickable.done .reveal-hint { opacity: 0; pointer-events: none; }
 
 /* ===========================
    EDUCATION TIMELINE
@@ -250,7 +286,17 @@ body {
   border: 1px solid rgba(56,189,248,0.2); padding: 2px 12px;
   border-radius: 999px; font-size: 0.74rem; font-weight: 700;
 }
-.edu-score--gold { background: rgba(251,191,36,0.12); color: var(--amber); border-color: rgba(251,191,36,0.25); }
+.edu-score--gold {
+  background: rgba(245,158,11,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(245,158,11,0.4);
+  box-shadow: 0 0 12px rgba(245,158,11,0.2);
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+@keyframes goldPulse {
+  0%,100% { box-shadow: 0 0 8px rgba(245,158,11,0.2); }
+  50%      { box-shadow: 0 0 18px rgba(245,158,11,0.45); }
+}
 
 /* ===========================
    INTERNSHIP
@@ -337,6 +383,77 @@ body {
 @keyframes statusPulse {
   0%,100% { box-shadow: 0 0 0 0 rgba(52,211,153,0.4); }
   50%      { box-shadow: 0 0 0 8px rgba(52,211,153,0); }
+}
+
+/* ===========================
+   AWARDS SECTION
+=========================== */
+.award-item {
+  display: flex; gap: 24px; align-items: flex-start;
+  flex-wrap: wrap;
+}
+.award-meta { flex: 1; min-width: 240px; display: flex; flex-direction: column; gap: 10px; }
+.award-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4);
+  color: var(--gold); font-size: 1rem; font-weight: 800;
+  padding: 8px 18px; border-radius: 999px;
+  width: fit-content;
+  box-shadow: 0 0 16px rgba(245,158,11,0.2);
+  animation: goldPulse 2.5s ease-in-out infinite;
+}
+.award-event {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem; font-weight: 700; color: var(--text); line-height: 1.3;
+}
+.award-org {
+  font-size: 0.78rem; color: var(--text3); letter-spacing: 0.02em;
+}
+.award-project-title {
+  font-size: 0.84rem; color: var(--text2); line-height: 1.6;
+  background: var(--surface); border: 1px solid var(--border);
+  border-left: 3px solid var(--amber); border-radius: 8px;
+  padding: 10px 14px;
+}
+.award-label-small {
+  display: block; font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: 4px;
+}
+.award-dept {
+  font-size: 0.75rem; color: var(--text3); letter-spacing: 0.02em;
+}
+
+/* Certificate preview thumbnail */
+.award-cert-preview {
+  flex-shrink: 0; width: 200px; height: 145px;
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid rgba(245,158,11,0.3);
+  cursor: pointer; position: relative;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.award-cert-preview:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(245,158,11,0.25);
+  border-color: rgba(245,158,11,0.6);
+}
+.award-cert-img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.award-cert-preview:hover .award-cert-img { transform: scale(1.06); }
+.award-cert-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,8,0,0.85) 0%, transparent 60%);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 12px; opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.award-cert-preview:hover .award-cert-overlay { opacity: 1; }
+.award-cert-overlay span {
+  font-size: 0.72rem; font-weight: 700;
+  color: var(--amber); letter-spacing: 0.06em; text-transform: uppercase;
 }
 
 /* ===========================
@@ -452,6 +569,8 @@ footer { border-top: 1px solid var(--border); padding: 32px 20px; }
   .freelance-banner { flex-wrap: wrap; }
   .freelance-status { margin-left: 0; }
   .footer-inner { justify-content: center; text-align: center; }
+  .award-item { flex-direction: column; }
+  .award-cert-preview { width: 100%; height: 180px; }
 }
 @media (max-width: 480px) {
   .hero-name { font-size: 2rem; }
