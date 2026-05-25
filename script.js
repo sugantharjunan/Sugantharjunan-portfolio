@@ -97,6 +97,17 @@ function toggleReveal(row) {
     }
   }
 }
+function toggleBox(box) {
+  const val = box.querySelector(".info-box-val");
+  if (!val) return;
+  if (box.classList.contains("revealed")) {
+    box.classList.remove("revealed");
+    val.textContent = "Click to view";
+  } else {
+    box.classList.add("revealed");
+    val.textContent = val.dataset.value;
+  }
+}
 
 /* ===========================
    REVEAL ON SCROLL
