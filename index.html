@@ -113,7 +113,7 @@
           <div class="edu-dot"></div>
           <div class="edu-content">
             <h3>Class X</h3>
-            <span class="edu-score edu-score--gold">100%</span>
+            <span class="edu-score edu-score--gold">100% 🏆</span>
           </div>
         </div>
       </div>
@@ -263,7 +263,6 @@
           </div>
         </article>
 
-      
         <article class="project-card project-card--freelance">
           <div class="project-img-wrap">
             <img src="freelance5.jpg" alt="IoT Compressed Air Pipeline Monitoring" class="project-img" onerror="this.parentElement.classList.add('img-fallback')" />
@@ -299,36 +298,49 @@
     <section class="card reveal">
       <div class="card-label">Certifications</div>
       <div class="cert-grid">
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert1.jpg', 'Industry 4.0 & IoT')">
           <div class="cert-icon">🏭</div>
           <div class="cert-title">Industry 4.0 &amp; IoT</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert2.jpg', 'Arduino')">
           <div class="cert-icon">⚡</div>
           <div class="cert-title">Arduino</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert3.jpg', 'Programming with ChatGPT')">
           <div class="cert-icon">🤖</div>
           <div class="cert-title">Programming with ChatGPT</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert4.jpg', 'Embedded Systems')">
           <div class="cert-icon">🔬</div>
           <div class="cert-title">Embedded Systems</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert5.jpg', 'Sensors & Actuators')">
           <div class="cert-icon">📡</div>
           <div class="cert-title">Sensors &amp; Actuators</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
-        <div class="cert-card">
+
+        <div class="cert-card" onclick="openCert('cert6.jpg', '9-Day Robotics Workshop')">
           <div class="cert-icon">🦾</div>
           <div class="cert-title">9-Day Robotics Workshop</div>
           <div class="cert-badge">Certified</div>
+          <div class="cert-view">👁 View</div>
         </div>
+
       </div>
     </section>
 
@@ -346,11 +358,22 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-name">Suganth Arjunan</div>
-      <div class="footer-copy">© 2026</div>
+      <div class="footer-copy">© 2026 </div>
     </div>
   </footer>
 
   <button id="topBtn" title="Back to top">↑</button>
+
+  <!-- Certificate Modal -->
+  <div id="certModal" onclick="closeCertBackdrop(event)">
+    <div class="cert-modal-box">
+      <div class="cert-modal-header">
+        <span id="certModalTitle"></span>
+        <button class="cert-modal-close" onclick="closeCert()">✕</button>
+      </div>
+      <img id="certModalImg" src="" alt="Certificate" />
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
