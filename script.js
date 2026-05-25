@@ -58,6 +58,8 @@ document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .p
 
 /* ===========================
    CLICK-TO-REVEAL (Contact & Personal)
+   — Click once to reveal, click again to hide
+   — Also opens a GitHub-style link when revealed
 =========================== */
 function toggleReveal(row) {
   const valEl = row.querySelector(".info-hidden");
@@ -68,11 +70,31 @@ function toggleReveal(row) {
     valEl.classList.remove("revealed");
     valEl.textContent = "••••••••••••";
     row.classList.remove("done");
+    // Remove link button if present
+    const existingBtn = row.querySelector(".info-link-btn");
+    if (existingBtn) existingBtn.remove();
   } else {
     // Reveal
     valEl.classList.add("revealed");
     valEl.textContent = valEl.dataset.value;
     row.classList.add("done");
+
+    // If row has a data-link, show a GitHub-style open button
+    const link = row.dataset.link;
+    if (link) {
+      const existingBtn = row.querySelector(".info-link-btn");
+      if (!existingBtn) {
+        const btn = document.createElement("a");
+        btn.href = link;
+        btn.target = "_blank";
+        btn.rel = "noopener noreferrer";
+        btn.className = "info-link-btn";
+        btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg> Open`;
+        // Insert after info-val
+        const infoDiv = row.querySelector("div");
+        if (infoDiv) infoDiv.appendChild(btn);
+      }
+    }
   }
 }
 
@@ -124,8 +146,13 @@ window.addEventListener("load", () => setTimeout(type, 800));
 =========================== */
 const topBtn = document.getElementById("topBtn");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) { topBtn.style.display = "flex"; topBtn.style.alignItems = "center"; topBtn.style.justifyContent = "center"; }
-  else topBtn.style.display = "none";
+  if (window.scrollY > 400) {
+    topBtn.style.display = "flex";
+    topBtn.style.alignItems = "center";
+    topBtn.style.justifyContent = "center";
+  } else {
+    topBtn.style.display = "none";
+  }
 });
 topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
 
