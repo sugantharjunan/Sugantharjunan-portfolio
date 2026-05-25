@@ -29,7 +29,7 @@ document.addEventListener("mousemove", (e) => {
   requestAnimationFrame(animateTrail);
 })();
 
-document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .project-btn").forEach((el) => {
+document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .project-btn, .info-row--clickable, .award-cert-preview").forEach((el) => {
   el.addEventListener("mouseenter", () => {
     cursor.style.transform = "translate(-50%,-50%) scale(2.2)";
     cursorTrail.style.transform = "translate(-50%,-50%) scale(1.6)";
@@ -37,6 +37,10 @@ document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .p
       cursor.style.background = "#34d399";
       cursor.style.boxShadow  = "0 0 10px #34d399";
       cursorTrail.style.borderColor = "rgba(52,211,153,0.6)";
+    } else if (el.classList.contains("award-cert-preview")) {
+      cursor.style.background = "#fbbf24";
+      cursor.style.boxShadow  = "0 0 10px #fbbf24";
+      cursorTrail.style.borderColor = "rgba(251,191,36,0.6)";
     } else {
       cursor.style.background = "#38bdf8";
       cursor.style.boxShadow  = "0 0 10px #38bdf8";
@@ -51,6 +55,26 @@ document.querySelectorAll("a, button, .skill-pill, .cert-card, .project-card, .p
     cursorTrail.style.borderColor = "rgba(56,189,248,0.5)";
   });
 });
+
+/* ===========================
+   CLICK-TO-REVEAL (Contact & Personal)
+=========================== */
+function toggleReveal(row) {
+  const valEl = row.querySelector(".info-hidden");
+  if (!valEl) return;
+
+  if (valEl.classList.contains("revealed")) {
+    // Hide again
+    valEl.classList.remove("revealed");
+    valEl.textContent = "••••••••••••";
+    row.classList.remove("done");
+  } else {
+    // Reveal
+    valEl.classList.add("revealed");
+    valEl.textContent = valEl.dataset.value;
+    row.classList.add("done");
+  }
+}
 
 /* ===========================
    REVEAL ON SCROLL
@@ -157,7 +181,6 @@ function closeCert() {
 }
 
 function closeCertBackdrop(e) {
-  // Only close when clicking the dark backdrop — not the image box
   if (e.target === document.getElementById("certModal")) closeCert();
 }
 
