@@ -302,48 +302,95 @@ footer{border-top:1px solid var(--border);padding:32px 20px;}
   <div class="hero-scroll-hint">scroll ↓</div>
 </header>
 
-<main class="container">
+  <!-- CONTACT -->
+  <section class="card reveal">
+    <div class="card-label">Contact</div>
 
-  <div class="two-col-grid">
-    <section class="card reveal">
-      <div class="card-label">Contact</div>
-      <div class="info-row info-row--clickable" onclick="toggleReveal(this)">
-        <span class="info-icon">📱</span>
-        <div>
-          <div class="info-key">Mobile</div>
-          <div class="info-val info-hidden" data-value="9597427479">••••••••••</div>
+    <!-- Mobile -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="tel:+919597427479">
+
+      <span class="info-icon">📱</span>
+
+      <div class="info-content">
+        <div class="info-key">Mobile</div>
+
+        <div class="info-val info-hidden"
+             data-value="+91 95974 27479">
+          ••••••••••
         </div>
-        <span class="reveal-hint">👁 tap to reveal</span>
       </div>
-      <div class="info-row info-row--clickable" onclick="toggleReveal(this)">
-        <span class="info-icon">✉️</span>
-        <div>
-          <div class="info-key">Email</div>
-          <div class="info-val info-hidden" data-value="suganthmanoj48@gmail.com">••••••••••••••••••</div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
+    <!-- Email -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="mailto:suganthmanoj48@gmail.com">
+
+      <span class="info-icon">✉️</span>
+
+      <div class="info-content">
+        <div class="info-key">Email</div>
+
+        <div class="info-val info-hidden"
+             data-value="suganthmanoj48@gmail.com">
+          ••••••••••••••
         </div>
-        <span class="reveal-hint">👁 tap to reveal</span>
       </div>
-    </section>
-    <section class="card reveal">
-      <div class="card-label">Personal</div>
-      <div class="info-row info-row--clickable" onclick="toggleReveal(this)">
-        <span class="info-icon">📍</span>
-        <div>
-          <div class="info-key">Location</div>
-          <div class="info-val info-hidden" data-value="Tiruppur, Tamil Nadu">••••••••••••••</div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
+  </section>
+
+
+  <!-- PERSONAL -->
+  <section class="card reveal">
+    <div class="card-label">Personal</div>
+
+    <!-- Location -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="https://maps.google.com/?q=Tiruppur,Tamil Nadu">
+
+      <span class="info-icon">📍</span>
+
+      <div class="info-content">
+        <div class="info-key">Location</div>
+
+        <div class="info-val info-hidden"
+             data-value="Tiruppur, Tamil Nadu">
+          ••••••••••••••
         </div>
-        <span class="reveal-hint">👁 tap to reveal</span>
       </div>
-      <div class="info-row info-row--clickable" onclick="toggleReveal(this)">
-        <span class="info-icon">🎂</span>
-        <div>
-          <div class="info-key">Date of Birth</div>
-          <div class="info-val info-hidden" data-value="April 27, 2006">••••••••••••</div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
+    <!-- DOB -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)">
+
+      <span class="info-icon">🎂</span>
+
+      <div class="info-content">
+        <div class="info-key">Date of Birth</div>
+
+        <div class="info-val info-hidden"
+             data-value="27 April 2006">
+          •••••••••••
         </div>
-        <span class="reveal-hint">👁 tap to reveal</span>
       </div>
-    </section>
-  </div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
+  </section>
+
+</div>
 
   <section class="card reveal">
     <div class="card-label">Education</div>
