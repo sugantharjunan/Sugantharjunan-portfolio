@@ -302,77 +302,96 @@ footer{border-top:1px solid var(--border);padding:32px 20px;}
   <div class="hero-scroll-hint">scroll ↓</div>
 </header>
 
- <div class="two-col-grid">
-
+  <!-- CONTACT -->
   <section class="card reveal">
     <div class="card-label">Contact</div>
-    <div class="info-grid">
 
-      <div class="info-box" onclick="toggleBox(this)">
-        <div class="info-box-top">
-          <span class="info-box-icon">📱</span>
-          <span class="info-box-key">Mobile</span>
-        </div>
-        <div class="info-box-val" data-value="+91 95974 27479">Click to view</div>
-        <div class="info-box-hint">🔒 Click to reveal</div>
-        <div class="info-box-action">
-          <a href="tel:+919597427479">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Call
-          </a>
+    <!-- Mobile -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="tel:+919597427479">
+
+      <span class="info-icon">📱</span>
+
+      <div class="info-content">
+        <div class="info-key">Mobile</div>
+
+        <div class="info-val info-hidden"
+             data-value="+91 95974 27479">
+          ••••••••••
         </div>
       </div>
 
-      <div class="info-box" onclick="toggleBox(this)">
-        <div class="info-box-top">
-          <span class="info-box-icon">✉️</span>
-          <span class="info-box-key">Email</span>
-        </div>
-        <div class="info-box-val" data-value="suganthmanoj48@gmail.com">Click to view</div>
-        <div class="info-box-hint">🔒 Click to reveal</div>
-        <div class="info-box-action">
-          <a href="mailto:suganthmanoj48@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Send Mail
-          </a>
-        </div>
-      </div>
-
+      <span class="reveal-hint">👁 tap to reveal</span>
     </div>
+
+    <!-- Email -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="mailto:suganthmanoj48@gmail.com">
+
+      <span class="info-icon">✉️</span>
+
+      <div class="info-content">
+        <div class="info-key">Email</div>
+
+        <div class="info-val info-hidden"
+             data-value="suganthmanoj48@gmail.com">
+          ••••••••••••••
+        </div>
+      </div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
   </section>
 
+
+  <!-- PERSONAL -->
   <section class="card reveal">
     <div class="card-label">Personal</div>
-    <div class="info-grid">
 
-      <div class="info-box" onclick="toggleBox(this)">
-        <div class="info-box-top">
-          <span class="info-box-icon">📍</span>
-          <span class="info-box-key">Location</span>
-        </div>
-        <div class="info-box-val" data-value="Tiruppur, Tamil Nadu">Click to view</div>
-        <div class="info-box-hint">🔒 Click to reveal</div>
-        <div class="info-box-action">
-          <a href="https://maps.google.com/?q=Tiruppur,Tamil+Nadu" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 14 8 14s8-8.75 8-14a8 8 0 0 0-8-8z"/></svg>
-            View Map
-          </a>
+    <!-- Location -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)"
+         data-link="https://maps.google.com/?q=Tiruppur,Tamil Nadu">
+
+      <span class="info-icon">📍</span>
+
+      <div class="info-content">
+        <div class="info-key">Location</div>
+
+        <div class="info-val info-hidden"
+             data-value="Tiruppur, Tamil Nadu">
+          ••••••••••••••
         </div>
       </div>
 
-      <div class="info-box" onclick="toggleBox(this)">
-        <div class="info-box-top">
-          <span class="info-box-icon">🎂</span>
-          <span class="info-box-key">Date of Birth</span>
-        </div>
-        <div class="info-box-val" data-value="27 April 2006">Click to view</div>
-        <div class="info-box-hint">🔒 Click to reveal</div>
-      </div>
-
+      <span class="reveal-hint">👁 tap to reveal</span>
     </div>
+
+    <!-- DOB -->
+    <div class="info-row info-row--clickable"
+         onclick="toggleReveal(this)">
+
+      <span class="info-icon">🎂</span>
+
+      <div class="info-content">
+        <div class="info-key">Date of Birth</div>
+
+        <div class="info-val info-hidden"
+             data-value="27 April 2006">
+          •••••••••••
+        </div>
+      </div>
+
+      <span class="reveal-hint">👁 tap to reveal</span>
+    </div>
+
   </section>
 
 </div>
+
   <section class="card reveal">
     <div class="card-label">Education</div>
     <div class="edu-timeline">
