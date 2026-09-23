@@ -384,161 +384,6 @@ body {
 .award-cert-preview:hover .award-cert-overlay { opacity: 1; }
 .award-cert-overlay span { font-size: 0.72rem; font-weight: 700; color: var(--amber); letter-spacing: 0.06em; text-transform: uppercase; }
 
-
-/* ============================================================
-   PCB DESIGN PROJECTS
-============================================================ */
-.pcb-section {
-  background:
-    linear-gradient(135deg, rgba(56,189,248,0.035), rgba(52,211,153,0.025)),
-    var(--bg2);
-  border: 1px solid rgba(56,189,248,0.12);
-}
-
-.pcb-section::before {
-  background: linear-gradient(90deg, transparent, var(--green), var(--cyan), transparent);
-}
-
-.pcb-intro {
-  max-width: 760px;
-  color: var(--text2);
-  font-size: 0.86rem;
-  line-height: 1.75;
-  margin-bottom: 22px;
-}
-
-.pcb-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-  gap: 14px;
-}
-
-.pcb-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-height: 225px;
-  padding: 20px;
-  text-decoration: none;
-  color: inherit;
-  background:
-    linear-gradient(145deg, rgba(15,23,42,0.98), rgba(10,25,20,0.96));
-  border: 1px solid rgba(52,211,153,0.16);
-  border-radius: 14px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease,
-              box-shadow 0.3s ease, background 0.3s ease;
-}
-
-.pcb-card::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--bg);
-  border: 1px solid var(--gold);
-  box-shadow: 0 0 8px rgba(245,158,11,0.25);
-}
-
-.pcb-card::after {
-  content: "";
-  position: absolute;
-  right: -30px;
-  bottom: -30px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 1px solid rgba(56,189,248,0.08);
-  box-shadow:
-    0 0 0 12px rgba(56,189,248,0.025),
-    0 0 0 24px rgba(56,189,248,0.018);
-  pointer-events: none;
-}
-
-.pcb-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(52,211,153,0.45);
-  background:
-    linear-gradient(145deg, rgba(17,31,49,1), rgba(8,35,25,1));
-  box-shadow:
-    0 18px 40px rgba(0,0,0,0.45),
-    0 0 24px rgba(52,211,153,0.08);
-}
-
-.pcb-index {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 14px;
-  color: var(--green);
-  font-family: "DM Mono", "Consolas", monospace;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
-.pcb-index::before {
-  content: "●";
-  color: var(--gold);
-  font-size: 0.45rem;
-}
-
-.pcb-name {
-  margin-bottom: 9px;
-  font-family: "Fraunces", serif;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: var(--text);
-}
-
-.pcb-desc {
-  flex: 1;
-  margin-bottom: 15px;
-  color: var(--text2);
-  font-size: 0.78rem;
-  line-height: 1.65;
-}
-
-.pcb-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.pcb-meta span {
-  padding: 4px 8px;
-  border-radius: 999px;
-  background: rgba(52,211,153,0.08);
-  border: 1px solid rgba(52,211,153,0.14);
-  color: var(--green);
-  font-size: 0.62rem;
-  font-weight: 600;
-}
-
-.pcb-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  width: fit-content;
-  color: var(--cyan);
-  font-size: 0.73rem;
-  font-weight: 700;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.pcb-card:hover .pcb-link {
-  color: var(--green);
-  transform: translateX(3px);
-}
-
-@media(max-width:768px) {
-  .pcb-grid { grid-template-columns: 1fr; }
-}
-
 /* ============================================================
    SKILLS
 ============================================================ */
@@ -676,6 +521,172 @@ footer { border-top: 1px solid var(--border); padding: 32px 20px; }
   .hero-socials { flex-direction: column; width: 100%; }
   .cert-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ============================================================
+   PCB DESIGN PROJECTS — INTEGRATED
+============================================================ */
+.pcb-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(145deg, rgba(15,23,42,.98), rgba(8,28,20,.96));
+  border-color: rgba(52,211,153,.16);
+}
+
+.pcb-section::after {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -70px;
+  bottom: -80px;
+  border: 1px solid rgba(56,189,248,.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 16px rgba(56,189,248,.025),
+    0 0 0 32px rgba(56,189,248,.018);
+  pointer-events: none;
+}
+
+.pcb-intro {
+  max-width: 760px;
+  margin-bottom: 24px;
+  color: var(--text2);
+  font-size: .84rem;
+  line-height: 1.75;
+}
+
+.pcb-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.pcb-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 235px;
+  padding: 20px;
+  color: inherit;
+  text-decoration: none;
+  background:
+    linear-gradient(145deg, rgba(17,31,49,.95), rgba(8,35,25,.94));
+  border: 1px solid rgba(52,211,153,.15);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease,
+              box-shadow .25s ease, background .25s ease;
+}
+
+.pcb-card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 8px rgba(245,158,11,.25);
+}
+
+.pcb-card::after {
+  content: "";
+  position: absolute;
+  right: -18px;
+  bottom: -18px;
+  width: 82px;
+  height: 82px;
+  border: 1px solid rgba(56,189,248,.08);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pcb-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(52,211,153,.48);
+  box-shadow:
+    0 16px 36px rgba(0,0,0,.38),
+    0 0 22px rgba(52,211,153,.08);
+}
+
+.pcb-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 13px;
+  color: var(--green);
+  font-family: "DM Mono", "Consolas", monospace;
+  font-size: .62rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.pcb-index::before {
+  content: "●";
+  color: var(--gold);
+  font-size: .45rem;
+}
+
+.pcb-name {
+  margin-bottom: 9px;
+  color: var(--text);
+  font-family: "Fraunces", serif;
+  font-size: .98rem;
+  line-height: 1.4;
+}
+
+.pcb-desc {
+  flex: 1;
+  margin-bottom: 14px;
+  color: var(--text2);
+  font-size: .75rem;
+  line-height: 1.65;
+}
+
+.pcb-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.pcb-meta span {
+  padding: 4px 7px;
+  color: var(--green);
+  background: rgba(52,211,153,.07);
+  border: 1px solid rgba(52,211,153,.14);
+  border-radius: 999px;
+  font-size: .58rem;
+  font-weight: 600;
+}
+
+.pcb-link {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  gap: 6px;
+  color: var(--cyan);
+  font-size: .7rem;
+  font-weight: 700;
+  transition: transform .2s ease, color .2s ease;
+}
+
+.pcb-card:hover .pcb-link {
+  color: var(--green);
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .pcb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .pcb-grid { grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -966,105 +977,62 @@ footer { border-top: 1px solid var(--border); padding: 32px 20px; }
           <h3>Smart Rabies Vaccination Monitoring System Using RFID and Fingerprint Authentication</h3>
           <p>Tracks pet vaccination records using RFID tags and fingerprint authentication. Stores data securely with automated reminders.</p>
           <div class="project-tags"><span>RFID</span><span>Fingerprint</span><span>ESP32</span><span>Healthcare</span></div>
-          <a href="https://gi
-  <!-- PCB DESIGN -->
+          <a href="https://github.com/sugantharjunan/Smart-Rabies-Vaccination-Monitoring-System-Using-RFID-and-Fingerprint-Authentication.git" target="_blank" class="project-btn project-btn--freelance">View Code →</a>
+        </div>
+      </article>
+      <article class="project-card project-card--freelance">
+        <div class="project-img-wrap">
+          <img src="freelance4.jpg" alt="Solar Monitoring" class="project-img" onerror="this.parentElement.classList.add('img-fallback')"/>
+          <div class="project-img-overlay"><span>☀️ Solar / IoT</span></div>
+        </div>
+        <div class="project-body">
+          <h3>IOT Based Smart Solar Monitoring System</h3>
+          <p>Monitors solar panel voltage, current, and power output in real-time using IoT. Dashboard displays energy generation and efficiency stats.</p>
+          <div class="project-tags"><span>ESP32</span><span>Solar</span><span>IoT</span><span>Dashboard</span></div>
+          <a href="https://github.com/sugantharjunan/IOT-Based-smart-Solar-monitoring-system" target="_blank" class="project-btn project-btn--freelance">View Code →</a>
+        </div>
+      </article>
+      <article class="project-card project-card--freelance">
+        <div class="project-img-wrap">
+          <img src="freelance5.jpg" alt="Air Pipeline Monitoring" class="project-img" onerror="this.parentElement.classList.add('img-fallback')"/>
+          <div class="project-img-overlay"><span>🏭 Industrial / Leak Detection</span></div>
+        </div>
+        <div class="project-body">
+          <h3>IoT-based Monitoring and Leak Detection System for Industrial Compressed Air Pipelines</h3>
+          <p>Real-time monitoring for industrial compressed air pipelines. Detects leaks early and logs data to cloud dashboard for predictive maintenance.</p>
+          <div class="project-tags"><span>ESP32</span><span>Pressure Sensor</span><span>IoT</span><span>Industrial</span><span>Leak Detection</span></div>
+          <a href="https://github.com/sugantharjunan/iot-based-monitoring-and-air-leak-detection-systemfor-industrial-compressed-air-pipelines.git" target="_blank" class="project-btn project-btn--freelance">View Code →</a>
+        </div>
+      </article>
+      <article class="project-card project-card--freelance">
+        <div class="project-img-wrap">
+          <img src="freelance6.jpg" alt="Railway Crack Detection" class="project-img" onerror="this.parentElement.classList.add('img-fallback')"/>
+          <div class="project-img-overlay"><span>🚆 Railway / Robotics</span></div>
+        </div>
+        <div class="project-body">
+          <h3>IoT-Based Railway Track Crack Detection Robot Using ESP32, GPS and GSM</h3>
+          <p>Autonomous robot traversing railway tracks to detect surface cracks. Reports crack location via GPS and sends GSM alerts for immediate maintenance response.</p>
+          <div class="project-tags"><span>ESP32</span><span>GPS</span><span>GSM</span><span>Robotics</span><span>Railway</span></div>
+          <a href="https://github.com/sugantharjunan" target="_blank" class="project-btn project-btn--freelance">View Code →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  
+
+
+  <!-- ══════════════════ PCB DESIGN ══════════════════ -->
   <section class="card pcb-section reveal" id="pcb-design">
     <div class="card-label">PCB Design</div>
+
     <p class="pcb-intro">
-      PCB design work featuring schematics, component selection, routing,
-      through-hole layouts, power-supply boards, sensor modules, and
-      microcontroller development boards. Click any board to view its
-      GitHub repository.
+      PCB design projects covering schematic design, component selection,
+      through-hole layouts, routing, power-supply boards, sensor modules,
+      timer circuits, and microcontroller development boards.
     </p>
 
     <div class="pcb-grid" id="pcbGrid"></div>
   </section>
-ntharjunan/Buck_converter"
-  },
-  {
-    name: "Arduino Expansion Board",
-    desc: "Shield-style expansion PCB adding breakout headers and peripheral support for an Arduino-based build.",
-    url: "https://github.com/sugantharjunan/Arduino-expansion-Board"
-  },
-  {
-    name: "741 Comparator",
-    desc: "Op-amp voltage comparator circuit built around the LM741, laid out as a compact through-hole board.",
-    url: "https://github.com/sugantharjunan/741-COMPARATOR"
-  },
-  {
-    name: "555 Timer",
-    desc: "Base NE555 timer circuit board — astable/monostable timing stage used as a building block for other designs.",
-    url: "https://github.com/sugantharjunan/555-TIMMER"
-  },
-  {
-    name: "PIC 28-Pin Board",
-    desc: "Development/breakout PCB for a 28-pin PIC microcontroller, with programming header and support circuitry.",
-    url: "https://github.com/sugantharjunan/PICK-28-PIN-"
-  },
-  {
-    name: "PIC 40-Pin Board",
-    desc: "Development/breakout PCB for a 40-pin PIC microcontroller, with programming header and support circuitry.",
-    url: "https://github.com/sugantharjunan/PICK-40-PIN"
-  },
-  {
-    name: "IR Sensor Module",
-    desc: "Infrared sensor board — emitter/receiver pair with signal-conditioning circuitry for obstacle or proximity sensing.",
-    url: "https://github.com/sugantharjunan/IR-SENSOR"
-  },
-  {
-    name: "5V DC Power Supply",
-    desc: "Regulated 5V linear power supply board — rectification, filtering, and regulation stage for bench/project use.",
-    url: "https://github.com/sugantharjunan/5v-dc-power-supply"
-  }
-];
-
-const grid = document.getElementById('pcbGrid');
-pcbProjects.forEach((p, i) => {
-  const a = document.createElement('a');
-  a.className = 'pcb-card';
-  a.href = p.url;
-  a.target = '_blank';
-  a.rel = 'noopener noreferrer';
-  a.innerHTML = `
-    <span class="pcb-card__index">BOARD ${String(i + 1).padStart(2, '0')}</span>
-    <h3 class="pcb-card__name">${p.name}</h3>
-    <p class="pcb-card__desc">${p.desc}</p>
-    <span class="pcb-card__link">View repository ↗</span>
-  `;
-  grid.appendChild(a);
-});
-
-/* ===========================
-   SCROLL PROGRESS BAR
-=========================== */
-const progressBar = document.getElementById("progressBar");
-window.addEventListener("scroll", () => {
-  const scrollTop = document.documentElement.scrollTop;
-  const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  progressBar.style.width = (scrollTop / totalHeight * 100) + "%";
-});
-
-/* ===========================
-   CUSTOM CURSOR
-=========================== */
-const cursor = document.getElementById("cursor");
-const cursorTrail = document.getElementById("cursorTrail");
-let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  cursor.style.left = mouseX + "px";
-  cursor.style.top = mouseY + "px";
-});
-(function animateTrail(){
-  trailX += (mouseX - trailX) * 0.15;
-  trailY += (mouseY - trailY) * 0.15;
-  cursorTrail.style.left = trailX + "px";
-  cursorTrail.style.top = trailY + "px";
-  requestAnimationFrame(animateTrail);
-})();
-</script>
-</body>
-</html>
 
   <!-- SKILLS -->
   <section class="card reveal">
@@ -1186,31 +1154,31 @@ document.addEventListener("mousemove", (e) => {
 const pcbProjects = [
   {
     name: "555 Timer Sequence LED Blinking",
-    desc: "NE555 astable oscillator driving a CD4017 decade counter for a sequential LED chaser, designed as a through-hole PCB.",
+    desc: "NE555 astable oscillator with CD4017 decade counter for a sequential LED chaser, designed as a through-hole PCB.",
     tags: ["KiCad", "NE555", "CD4017"],
     url: "https://github.com/sugantharjunan/555-TIMMER-SEQUANCE-LED-BLINKING"
   },
   {
     name: "Buck Converter",
-    desc: "Step-down DC-DC converter PCB with power-stage routing, switching-regulator layout, filtering, and compact component placement.",
+    desc: "Step-down DC-DC converter PCB with switching-regulator layout, power-stage routing, and output filtering.",
     tags: ["KiCad", "Power", "DC-DC"],
     url: "https://github.com/sugantharjunan/Buck_converter"
   },
   {
     name: "Arduino Expansion Board",
-    desc: "Shield-style expansion PCB providing breakout headers and peripheral connections for Arduino-based projects.",
+    desc: "Shield-style expansion PCB with breakout headers and peripheral connections for Arduino-based projects.",
     tags: ["KiCad", "Arduino", "Expansion"],
     url: "https://github.com/sugantharjunan/Arduino-expansion-Board"
   },
   {
     name: "741 Comparator",
-    desc: "Compact LM741-based comparator board designed for voltage-comparison and signal-conditioning applications.",
+    desc: "Compact LM741-based comparator board for voltage comparison and signal-conditioning applications.",
     tags: ["KiCad", "LM741", "Analog"],
     url: "https://github.com/sugantharjunan/741-COMPARATOR"
   },
   {
     name: "555 Timer",
-    desc: "NE555 timer circuit board suitable as a reusable astable or monostable timing building block.",
+    desc: "NE555 timer circuit board suitable for astable and monostable timing applications.",
     tags: ["KiCad", "NE555", "Timer"],
     url: "https://github.com/sugantharjunan/555-TIMMER"
   },
@@ -1228,14 +1196,14 @@ const pcbProjects = [
   },
   {
     name: "IR Sensor Module",
-    desc: "Infrared sensor PCB combining emitter/receiver components with signal-conditioning circuitry for sensing applications.",
+    desc: "Infrared sensor PCB combining emitter/receiver components with signal-conditioning circuitry.",
     tags: ["KiCad", "IR Sensor", "Sensor"],
     url: "https://github.com/sugantharjunan/IR-SENSOR"
   },
   {
     name: "5V DC Power Supply",
     desc: "Regulated 5V linear power-supply PCB covering rectification, filtering, regulation, and output connections.",
-    tags: ["KiCad", "5V", "Power Supply"],
+    tags: ["KiCad", "5V", "Power"],
     url: "https://github.com/sugantharjunan/5v-dc-power-supply"
   }
 ];
@@ -1261,14 +1229,15 @@ function renderPCBProjects() {
   `).join("");
 }
 
-document.addEventListener("DOMContentLoaded", renderPCBProjects);
+renderPCBProjects();
+
 
 /* ============================================================
    HARDCODED ASSISTANT ANSWERS (No API key needed)
 ============================================================ */
 const VA_ANSWERS = {
   about:      "Suganth Arjunan is an Electronics & Communication Engineering student at Velalar College of Engineering and Technology (VCET), Erode, Tamil Nadu. Born on 27 April 2006 in Tiruppur, Tamil Nadu, he is passionate about Embedded Systems, IoT, and PCB Design.",
-  skills:     "Suganth's technical skills include Arduino IDE, Embedded C, C Programming, Proteus, KiCad PCB Design, ESP8266, ESP32, NodeMCU, GPS, GSM, Firebase, RFID, Fingerprint Sensors, DHT11, MQ135, and MPU6050. His PCB work includes timer circuits, buck converter, Arduino expansion, comparator, PIC boards, IR sensor module, and 5V power supply boards.",
+  skills:     "Suganth's technical skills include Arduino IDE, Embedded C, C Programming, Proteus, KiCad PCB Design, ESP8266, ESP32, NodeMCU, GPS, GSM, Firebase, RFID, Fingerprint Sensors, DHT11, MQ135, and MPU6050. His PCB projects include timer circuits, a buck converter, Arduino expansion board, comparator, PIC boards, IR sensor module, and 5V power supply.",
   projects:   "Suganth has built 4 core projects: a Public Transport Tracking System (ESP8266 + GPS + Firebase), Smart Environmental Monitoring (Arduino + DHT11 + MQ135), Smart Agriculture Monitoring (NodeMCU + soil sensors), and an IoT Smart Health Tracking & Air Purifying System for hazardous environments.",
   hire:       "Yes! Suganth is open to freelance projects, internships, and full-time opportunities in Embedded Systems, IoT, and PCB Design. You can reach him at suganthmanoj48@gmail.com or via LinkedIn at linkedin.com/in/suganth-arjunan.",
   internship: "Suganth completed an internship at San Tech Innovation in December 2024, working on embedded systems design — covering real-time performance, microcontrollers, sensors, and communication protocols.",
