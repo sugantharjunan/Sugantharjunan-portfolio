@@ -852,6 +852,238 @@ footer { border-top: 1px solid var(--border); padding: 32px 20px; }
       </article>
     </div>
   </section>
+  
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PCB Design Projects — Suganth Arjunan</title>
+<style>
+  :root{
+    --pcb-bg:#0a0f0a;
+    --pcb-panel:#0e1712;
+    --pcb-copper:#c9884a;
+    --pcb-copper-bright:#e3a869;
+    --pcb-trace:#3a5a44;
+    --pcb-silk:#d8e6d2;
+    --pcb-muted:#7c9184;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--pcb-bg);
+    color:var(--pcb-silk);
+    font-family:'Segoe UI', system-ui, sans-serif;
+  }
+
+  /* ===========================
+     SCROLL PROGRESS BAR
+  =========================== */
+  #progressBar{
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--pcb-copper), var(--pcb-copper-bright));
+    z-index:999;
+  }
+
+  /* ===========================
+     CUSTOM CURSOR
+  =========================== */
+  #cursor{
+    position:fixed; width:8px; height:8px; border-radius:50%;
+    background:var(--pcb-copper-bright); pointer-events:none; z-index:1000;
+    transform:translate(-50%,-50%); transition:width .15s,height .15s;
+  }
+  #cursorTrail{
+    position:fixed; width:26px; height:26px; border-radius:50%;
+    border:1px solid var(--pcb-trace); pointer-events:none; z-index:999;
+    transform:translate(-50%,-50%);
+  }
+
+  /* ===========================
+     PCB PROJECTS SECTION
+  =========================== */
+  .pcb-section{
+    max-width:1100px; margin:0 auto; padding:80px 24px 100px;
+  }
+  .pcb-section__label{
+    font-family:'Consolas','Courier New',monospace;
+    font-size:13px; letter-spacing:.04em; color:var(--pcb-copper);
+    margin:0 0 6px;
+  }
+  .pcb-section__title{
+    font-size:clamp(28px,4vw,42px); line-height:1.15; margin:0 0 14px;
+    color:var(--pcb-silk); font-weight:600; max-width:14ch;
+  }
+  .pcb-section__intro{
+    max-width:62ch; color:var(--pcb-muted); font-size:16px; line-height:1.6;
+    margin:0 0 48px;
+  }
+
+  .pcb-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:22px;
+  }
+
+  .pcb-card{
+    position:relative;
+    background:var(--pcb-panel);
+    border:1px solid var(--pcb-trace);
+    padding:22px 20px 20px;
+    text-decoration:none;
+    color:inherit;
+    display:block;
+  }
+  /* silkscreen-style mounting holes at corners */
+  .pcb-card::before, .pcb-card::after{
+    content:''; position:absolute; width:6px; height:6px; border-radius:50%;
+    background:var(--pcb-bg); border:1px solid var(--pcb-copper);
+  }
+  .pcb-card::before{ top:8px; left:8px; }
+  .pcb-card::after{ bottom:8px; right:8px; }
+
+  .pcb-card__index{
+    font-family:'Consolas','Courier New',monospace;
+    font-size:11px; color:var(--pcb-muted); display:block; margin-bottom:10px;
+  }
+  .pcb-card__name{
+    font-size:17px; font-weight:600; color:var(--pcb-silk); margin:0 0 8px;
+  }
+  .pcb-card__desc{
+    font-size:13.5px; color:var(--pcb-muted); line-height:1.55; margin:0 0 16px;
+    min-height:54px;
+  }
+  .pcb-card__link{
+    font-family:'Consolas','Courier New',monospace; font-size:12px;
+    color:var(--pcb-copper); display:inline-flex; align-items:center; gap:6px;
+  }
+  .pcb-card:hover{ border-color:var(--pcb-copper); }
+  .pcb-card:hover .pcb-card__link{ color:var(--pcb-copper-bright); }
+
+  @media (prefers-reduced-motion:no-preference){
+    .pcb-card{ transition:border-color .2s ease, transform .2s ease; }
+    .pcb-card:hover{ transform:translateY(-2px); }
+  }
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+<div id="cursor"></div>
+<div id="cursorTrail"></div>
+
+<section class="pcb-section" id="pcb-projects">
+  <p class="pcb-section__label">// KICAD REPOSITORIES</p>
+  <h2 class="pcb-section__title">PCB Design Projects</h2>
+  <p class="pcb-section__intro">
+    Schematics, layouts, and Gerber files from boards I've designed in KiCad —
+    timer circuits, converters, and expansion boards, most built and tested on
+    real hardware.
+  </p>
+
+  <div class="pcb-grid" id="pcbGrid"></div>
+</section>
+
+<script>
+/* ===========================
+   PCB PROJECT DATA
+   Edit this array to add/remove boards
+=========================== */
+const pcbProjects = [
+  {
+    name: "555 Timer Sequence LED Blinking",
+    desc: "NE555 astable oscillator driving a CD4017 decade counter for a sequential LED chaser, laid out as a through-hole PCB.",
+    url: "https://github.com/sugantharjunan/555-TIMMER-SEQUANCE-LED-BLINKING"
+  },
+  {
+    name: "Buck Converter",
+    desc: "Step-down DC-DC converter board — switching regulator layout with power-stage routing and output filtering.",
+    url: "https://github.com/sugantharjunan/Buck_converter"
+  },
+  {
+    name: "Arduino Expansion Board",
+    desc: "Shield-style expansion PCB adding breakout headers and peripheral support for an Arduino-based build.",
+    url: "https://github.com/sugantharjunan/Arduino-expansion-Board"
+  },
+  {
+    name: "741 Comparator",
+    desc: "Op-amp voltage comparator circuit built around the LM741, laid out as a compact through-hole board.",
+    url: "https://github.com/sugantharjunan/741-COMPARATOR"
+  },
+  {
+    name: "555 Timer",
+    desc: "Base NE555 timer circuit board — astable/monostable timing stage used as a building block for other designs.",
+    url: "https://github.com/sugantharjunan/555-TIMMER"
+  },
+  {
+    name: "PIC 28-Pin Board",
+    desc: "Development/breakout PCB for a 28-pin PIC microcontroller, with programming header and support circuitry.",
+    url: "https://github.com/sugantharjunan/PICK-28-PIN-"
+  },
+  {
+    name: "PIC 40-Pin Board",
+    desc: "Development/breakout PCB for a 40-pin PIC microcontroller, with programming header and support circuitry.",
+    url: "https://github.com/sugantharjunan/PICK-40-PIN"
+  },
+  {
+    name: "IR Sensor Module",
+    desc: "Infrared sensor board — emitter/receiver pair with signal-conditioning circuitry for obstacle or proximity sensing.",
+    url: "https://github.com/sugantharjunan/IR-SENSOR"
+  },
+  {
+    name: "5V DC Power Supply",
+    desc: "Regulated 5V linear power supply board — rectification, filtering, and regulation stage for bench/project use.",
+    url: "https://github.com/sugantharjunan/5v-dc-power-supply"
+  }
+];
+
+const grid = document.getElementById('pcbGrid');
+pcbProjects.forEach((p, i) => {
+  const a = document.createElement('a');
+  a.className = 'pcb-card';
+  a.href = p.url;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+  a.innerHTML = `
+    <span class="pcb-card__index">BOARD ${String(i + 1).padStart(2, '0')}</span>
+    <h3 class="pcb-card__name">${p.name}</h3>
+    <p class="pcb-card__desc">${p.desc}</p>
+    <span class="pcb-card__link">View repository ↗</span>
+  `;
+  grid.appendChild(a);
+});
+
+/* ===========================
+   SCROLL PROGRESS BAR
+=========================== */
+const progressBar = document.getElementById("progressBar");
+window.addEventListener("scroll", () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progressBar.style.width = (scrollTop / totalHeight * 100) + "%";
+});
+
+/* ===========================
+   CUSTOM CURSOR
+=========================== */
+const cursor = document.getElementById("cursor");
+const cursorTrail = document.getElementById("cursorTrail");
+let mouseX = 0, mouseY = 0, trailX = 0, trailY = 0;
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+});
+(function animateTrail(){
+  trailX += (mouseX - trailX) * 0.15;
+  trailY += (mouseY - trailY) * 0.15;
+  cursorTrail.style.left = trailX + "px";
+  cursorTrail.style.top = trailY + "px";
+  requestAnimationFrame(animateTrail);
+})();
+</script>
+</body>
+</html>
 
   <!-- SKILLS -->
   <section class="card reveal">
